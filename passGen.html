@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Poopins", "sans-serif";
+        box-sizing: border-box;
+      }
+      body {
+        background-color: lightblue;
+      }
+      #container {
+        text-align: center;
+        margin: 100px 500px;
+        height: 60vh;
+        width: 60vh;
+        background-color: lightgreen;
+        border-radius: 30px;
+        padding: 10px;
+        border: 2px solid gray;
+      }
+      #heading {
+        padding: 20px;
+      }
+      input {
+        height: 30px;
+        width: 100%;
+        margin-bottom: 20px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        padding-left: 24%;
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+      #btn {
+        height: 30px;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        padding-left: 5px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="heading">Random Password Generator</h1>
+      <div pass-gen>
+        <input id="input" type="text" value="" />
+        
+        <button id="btn">Generate</button>
+        
+      </div>
+      
+    </div>
+
+    <script>
+      let input = document.querySelector("#input");
+      let btn = document.querySelector("#btn");
+      let result = document.querySelector("#result");
+    
+      let newPass = "";
+      let length=15;
+
+      let upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let lowerCase = "abcdefghijklmnopqrstuvwxyz";
+      let splChar = "!@#$%^&*";
+      let digit = "1234567890";
+
+      function createPassword(count) {
+        let arr=[
+        upperCase[Math.floor(Math.random() * 26)],
+        lowerCase[Math.floor(Math.random() * 26)],
+        splChar[Math.floor(Math.random() * 8)],
+        digit[Math.floor(Math.random() * 10)]
+        ]
+
+        return arr[count];
+      }
+
+      function passGen() {
+        for (let i = 0; i < length; i++) {
+          let count = Math.floor(Math.random() * 4);
+          newPass+=createPassword(count);
+        }
+       
+        input.value = newPass;
+        newPass="";
+      }
+
+      btn.addEventListener("click", passGen);
+    </script>
+  </body>
+</html>
