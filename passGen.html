@@ -87,9 +87,11 @@
         return arr[count];
       }
 
+
       function passGen() {
         for (let i = 0; i < length; i++) {
           let count = Math.floor(Math.random() * 4);
+          console.log("hello")
           newPass+=createPassword(count);
         }
        
